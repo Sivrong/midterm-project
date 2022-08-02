@@ -119,6 +119,43 @@ void Show_Record()
   }
 }
 
+void searchRecord(string lastName)
+{
+	// if head is NULL
+	if (!head) {
+		cout << "No such Record "
+			<< "Available\n";
+		return;
+	}
+
+	// Otherwise
+	else {
+		Student* p = head;
+		while (p) {
+			if (p->lastName == lastName) {
+				cout << "First Name\t\t"
+					<< p->firstName << endl;
+				cout << "Last Name\t"
+				<< p->lastName << endl;
+				cout << "Email\t"
+					<< p->email << endl;
+				cout << "Phone\t\t"
+					<< p->phone << endl;
+				cout << "Course Code\t\t"
+					<< p->courseCode << endl;
+				cout << "Grade\t"
+					<< p->grade << endl;
+			return;
+			}
+			p = p->next;
+		}
+
+		if (p == NULL)
+			cout << "No such Record "
+				<< "Available\n";
+	}
+}
+
 // Driver code
 int main()
 {
@@ -155,6 +192,13 @@ int main()
       cin >> grade;
       insertRecord(firstName, lastName, email, phone, courseCode, grade);
     }
+    else if (Choice == 3)
+		{
+			cout << "Enter Last Name of Student whose "
+					"record you want to Search\n";
+			cin >> lastName;
+			searchRecord(lastName);
+		}
     else if (Choice == 4)
     {
         Show_Record();
