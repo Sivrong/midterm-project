@@ -54,7 +54,8 @@ void insertRecord(string firstName,
            int grade)
 {
   
-  // if Record Already Exist
+  // if Record Already Exist 
+  //Thao Sotheavatey
   if (check(courseCode))
   {
     cout << "Student with this "
@@ -92,7 +93,7 @@ void insertRecord(string firstName,
 
 //You can put delete function here and add the choice at line 196
 
-
+//Chea Jonathan
 void Show_Record()
 {
   Student *p = head;
@@ -119,7 +120,7 @@ void Show_Record()
     }
   }
 }
-
+//Suy Visal & Meach SopheaVicheka
 void searchRecord(string lastName)
 {
 	// if head is NULL
