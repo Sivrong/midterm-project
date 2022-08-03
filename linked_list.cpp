@@ -2,7 +2,12 @@
 #include <iomanip>
 using namespace std;
 
+//You can put delete function under insert function and call the function in choice 2
+//You can put print range under the show record function here and call the function in choice 4
+//You can put calculate average on top of the show all function here and acall the function in choice 5
+
 // Student Class
+// Lay Sivrong
 class Student
 {
 public:
@@ -18,7 +23,6 @@ public:
 
 // Stores the head of the Linked List
 Student *head = new Student();
-
 
 // Check Function to check that if
 // Record Already Exist or Not
@@ -43,9 +47,7 @@ bool check(string x)
 }
 
 // Function to insert the record
-// Sivrong
-// Function to insert the record
-
+//Thao Sotheavatey
 void insertRecord(string firstName,
            string lastName,
            string email,
@@ -55,7 +57,7 @@ void insertRecord(string firstName,
 {
   
   // if Record Already Exist 
-  //Thao Sotheavatey
+  
   if (check(courseCode))
   {
     cout << "Student with this "
@@ -91,7 +93,7 @@ void insertRecord(string firstName,
      << "Successfully\n";
 }
 
-//You can put delete function here and add the choice at line 196
+
 
 //Chea Jonathan
 void Show_Record()
@@ -159,6 +161,7 @@ void searchRecord(string lastName)
 }
 
 // Driver code
+//Lay Sivrong
 int main()
 {
   head = NULL;
@@ -169,11 +172,14 @@ int main()
   // Menu-driven program
   while (true)
   {
-    cout << "\nWelcome to student database menu!\n\tPress 1 to "
-        "insert a new Record\n\tPress 2 to delete a "
-        " record\n\tPress 3 to Search a database(by last name) "
-        "Record\n\tPress 4 to print a range in the database"
-        "\n\tPress 5 to find the class average for a course\n\tPress 9 to quit\n";
+    cout << "\nWelcome to student database menu!\n\t"
+        "Press 1 to insert a new Record\n\tPress 2 to delete a "
+        "Press 2 to delete a record\n\t"
+        "Press 3 to Search a database(by last name) Record\n\t"
+        "Press 4 to print a range in the database\n\t"
+        "Press 5 to find the class average for a course\n\t"
+        "Press 9 to quit\n";
+        
     cout << "\nEnter your Choice\n";
 
     // Enter Choice
@@ -194,6 +200,10 @@ int main()
       cin >> grade;
       insertRecord(firstName, lastName, email, phone, courseCode, grade);
     }
+    else if (Choice == 2) 
+    		{
+	    
+    		}
 	  
     else if (Choice == 3)
 		{
@@ -206,6 +216,11 @@ int main()
     {
         Show_Record();
     }
+    else if (Choice == 5)
+    {
+        
+    }
+	  
     else if (Choice == 9)
 		{
 			exit(0);
