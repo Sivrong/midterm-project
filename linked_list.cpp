@@ -90,6 +90,7 @@ void insertRecord(string firstName,
      << "Successfully\n";
 }
 
+//You can put delete function here and add the choice at line 196
 
 
 void Show_Record()
@@ -192,6 +193,7 @@ int main()
       cin >> grade;
       insertRecord(firstName, lastName, email, phone, courseCode, grade);
     }
+	  
     else if (Choice == 3)
 		{
 			cout << "Enter Last Name of Student whose "
