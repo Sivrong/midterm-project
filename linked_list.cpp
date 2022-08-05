@@ -93,7 +93,11 @@ void insertRecord(string firstName,
      << "Successfully\n";
 }
 
-
+//Long Chan Seka and Chhin Somalin
+void deleteRecord()
+{
+	
+}
 
 //Chea Jonathan
 void Show_Record()
@@ -202,7 +206,9 @@ int main()
     }
     else if (Choice == 2) 
     		{
-	    
+	    cout << "Enter the position to delete: ";
+	    cin >> position;
+	    deleteRecord();
     		}
 	  
     else if (Choice == 3)
