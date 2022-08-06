@@ -127,6 +127,7 @@ void Show_Record()
   }
 }
 //Suy Visal & Meach SopheaVicheka
+// pull request by Suy Visal
 void searchRecord(string lastName)
 {
 	// if head is NULL
