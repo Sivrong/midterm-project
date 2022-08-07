@@ -1,38 +1,72 @@
 #include <iostream>
 #include <cstring>
+#include "queue.h"
+#include "stack.h"
 using namespace std;
-// One extra comment by T. Peter
+
+static Stack schar;
+static Queue qchar;
+
+void PushAll(char* str, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		schar.Push(str[i]);
+	}
+	
+	schar.DisplayStack();
+}
+
+void EnqueueAll(char* str, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		qchar.Enqueue(str[i]);
+	}
+
+	qchar.DisplayQueue();
+}
+
+bool palindrome()
+{
+	while (!schar.IsEmpty()||!qchar.IsEmpty())
+	{
+		if (schar.Pop()!= qchar.Dequeue())
+		{
+			return false;
+		}
+	}
+	return true;
+}
 
 int main(void)
 {
-    string str;
 	cout << "Please enter the word:" << endl;
+	
+	char *cstr;
+	string str;
 	cin >> str;
 
-	//Create the stack and queue object
-    Stack stack = Stack();
-    Queue que = Queue();
+	cstr = new char[str.size() + 1];
+	strcpy(cstr, str.c_str());
 
-    //Push and enqueue all character
-    int leng = str.size();
-    for (int i = 0; i < leng ; i++) 
-    {
-        stack.Push(str[i]);
-        que.Enqueue(str[i]);
+	cout << cstr << endl;
+	cout << str.size() << endl;
+	
+	PushAll(cstr, str.size());
+    EnqueueAll(cstr, str.size());
 
-    }
+	
+	if (palindrome())
+	{
+		cout << "It is a palindrome word." << endl;
+	}
+	else
+	{
+		cout << "It is NOT a palindrome word." << endl;
+	}
 
-    for (int i = 0; i < leng ; i++) 
-    {
-        char ch1 = stack.Pop();
-        char qch = que.Dequeue();
-        cout << ch1 << "  " << qch << endl;
-        
-            if (ch1 != qch)
-        {
-            cout << "No, it's not a palindrome";
-            return (0);
-        }
-    }
-        cout << "Yes, it's a palindrome";
+
+	system("pause");
+	return 0;
 }
