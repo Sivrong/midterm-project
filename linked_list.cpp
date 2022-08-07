@@ -96,7 +96,43 @@ void insertRecord(string firstName,
 //Long Chan Seka and Chhin Somalin
 void deleteRecord()
 {
-	
+	void deleteRecord(Student** head, int position)
+{
+    Student* temp;
+    Student* forw;
+    Student* curr = *head;
+    Student* prev = *head;
+    // In Linked List is empty Just return it
+    if (*head==NULL)
+    cout<<"No records to delete";
+  
+//        if (curr == NULL)
+//        return;
+    //    unlink the Student from linklist
+        else if(position == 1) 
+        {
+            *head = curr->next;
+            free(curr);
+            curr = NULL;
+            cout<<"Record is deleted";
+            
+        }
+        else
+        {
+          while(position!=1)
+          {
+            prev= curr;
+            curr=curr->next;
+            position--;
+          }
+          prev->next=curr->next;
+          free(curr);
+          curr = NULL; 
+        }
+//        if(position > curr->position)
+  //      {
+    //      cout<<"You entered incorrect position . Linked list is out of bound!!!";
+      //  }
 }
 
 //Chea Jonathan
