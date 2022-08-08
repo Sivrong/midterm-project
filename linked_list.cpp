@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -49,7 +48,7 @@ bool check(string x)
 
 // Function to insert the record
 //Thao Sotheavatey
-void insertRecord(string firstName,
+ void insertRecord(string firstName,
            string lastName,
            string email,
            string phone,
@@ -65,7 +64,7 @@ void insertRecord(string firstName,
        << "record Already Exists\n";
     
   }
-
+  
   // Create new Student to Insert Record
   Student *t = new Student();
   t->courseCode = courseCode;
@@ -76,21 +75,35 @@ void insertRecord(string firstName,
   t->grade = grade;
   t->next = NULL;
 
-  // Insert at Begin
-  if (head == NULL) {
+  // Insert at Begin | Insert the first node
+  if (head == NULL)
+  {
     t->position = 1;
     // t->next = head;
     head = t;
-    //return head;
   }
   else
   {
+    //Insert at the end
+    Student* curr;
+    curr = head;
+    Student *t = new Student();
+    t->courseCode = courseCode;
+    t->firstName = firstName;
+    t->lastName = lastName;
+    t->email = email;
+    t->phone = phone;
+    t->grade = grade;
     t->position = head->position+1;
-    t->next = NULL;
 
-    t->next = head;
-    head = t;
-    //return head;
+    while(curr->next != NULL)
+    {
+     t->position++;
+     cout<<"Hey hey"; //testing to check if the code met condition in while block
+     t->next = NULL;
+     curr = curr->next;
+    }
+    curr->next = t;
   }
 
   cout << "Record Inserted "
@@ -103,42 +116,54 @@ void deleteRecord(Student** head, int position)
 {
     Student* temp;
     Student* forw;
-    Student* curr = *head;
-    Student* prev = *head;
+    Student* curr = *head; //current pointer assign to head
+    Student* prev = *head; //previous pointer assign to head
+    int count = 0; //count no of nodes in LL
     // In Linked List is empty Just return it
     if (*head==NULL)
     cout<<"No records to delete";
   
-//        if (curr == NULL)
-//        return;
-    //    unlink the Student from linklist
-        else if(position == 1) 
+// if position is 1 or first node (head)
+        else if(position == 1)
         {
             *head = curr->next;
             free(curr);
             curr = NULL;
             cout<<"Record is deleted";
-            
+            return;
         }
-        else
-        {
-          while(position!=1)
+        prev =*head;
+            while (prev != NULL)
           {
-            prev= curr;
-            curr=curr->next;
-            position--;
+              count++;
+                prev = prev->next;
           }
-          prev->next=curr->next;
-          free(curr);
-          curr = NULL; 
-        }
-//        if(position > curr->position)
-  //      {
-    //      cout<<"You entered incorrect position . Linked list is out of bound!!!";
-      //  }
-}
-
-//Chea Jonathan
+          if (count < 1 || position > count)
+          {
+            cout << "Invalid position";
+              return;
+          }
+          else
+        {
+          prev = *head;
+           //delete node position which is not equal to 1
+          while(position!=1) //position is not 1
+          {
+            
+            prev= curr; //prev pointer point to current node
+            curr=curr->next; // current pointer point to next node of current
+            position--; //decrement of position
+            
+            }
+            prev->next=curr->next; // to update the previous node to the next node of the delete node
+            free(curr); // free the delete node
+            curr = NULL; //set delete node to null
+            cout<<"Record "<<count<<"is deleted\n";
+            return;
+          }
+          
+    }
+    //Chea Jonathan
 void Show_Record(struct Student* head)
 {
   
@@ -157,7 +182,7 @@ void Show_Record(struct Student* head)
         cout << "Phone :\t"<<ptr->email << "\n";
         cout <<"Phone :\t"<<ptr->phone << "\n";
         cout <<"Grade :\t"<<ptr->grade << "\n";
-        cout <<"Position :\t"<<ptr->position<< endl;
+        cout <<"Position :\t"<<ptr->position<< endl<<endl;
         ptr = ptr->next;
     }
 }
@@ -224,7 +249,7 @@ int main()
         
     cout << "\nEnter your Choice\n";
 
-    // Enter Choice
+    // Enter Choice //SHOULD USE SWITCH CASE , CLASS N OBJECT TO SIMPLYFY UR CODE
     cin >> Choice;
     if (Choice == 1)
     {
@@ -240,30 +265,18 @@ int main()
       cin >> courseCode;
       cout << "Enter Grade of Student\n";
       cin >> grade;
+      
      insertRecord(firstName, lastName, email, phone, courseCode,grade);
     }
+    
+    //Long Chan Seka and Chhin Somalin
     else if (Choice == 2)
     {
-    //Student* head ;
-   // head = push(head, position);
- //   head = push(head, 2);
- //   head = push(head, 3);
- //   head = push(head, 2);
- //   head = push(head, 8);
-  //  head = push(head, 1);
- //   head = push(head, 2);
- //   head = push(head, 2);
-  
     // Key to delete
     cout << "Enter the position to delete: ";
     cin >> position;
-    //cin >> key;
-    //int key = 2;
-    //cout << "Created Linked List:\n ";
-    //printList(head);
-    // Function call
      deleteRecord(&head, position);
-    }   
+    }
     
     else if (Choice == 3)
     {
