@@ -112,6 +112,7 @@ bool check(string x)
 
 //Long Chan Seka and Chhin Somalin
 
+ main
 void deleteRecord(Student** head, int position)
 {
     Student* temp;
@@ -165,6 +166,10 @@ void deleteRecord(Student** head, int position)
     }
     //Chea Jonathan
 void Show_Record(struct Student* head)
+
+//Chea Jonathan and Eak Tech Hav
+void showAllRecords()
+main
 {
   
   if (head == NULL)
@@ -187,7 +192,69 @@ void Show_Record(struct Student* head)
     }
 }
 
+ main
 
+
+void showRecordInRange(int start, int end){
+    Student *students = head;
+  if (students == NULL)
+  {
+    cout << "No Record Available\n";
+  }
+  else
+  {
+    cout << "Course Code\t\tFirst Name\t\tLast Name\t\tEmail\t\tPhone\t\tGrade\t\tPosition\n";
+
+
+    while (students != NULL)
+    {
+        int pos = students->position;
+        
+        if(pos >= start && pos <= end){
+        cout << students->courseCode << "\t\t"
+         << students->firstName << "\t\t"
+         << students->lastName << "\t\t"
+         << students->email << "\t\t"
+         << students->phone << "\t\t"
+         << students->grade << "\t\t"
+         << students->position << endl;
+        }
+      students = students->next;
+    }
+  }
+}
+
+// Option 4
+void showRecordOption() {
+    int choice;
+    
+    while(true){
+        cout << "Press 1 to print all\nPress 2 to print range\nPress 3 to exit";
+        cout << "\nEnter your choice\n";
+        cin >> choice;
+        
+        
+        if(choice == 1){
+            showAllRecords();
+        }else if (choice == 2){
+            int start, end;
+            cout << "\nEnter start position\n";
+            cin >> start;
+            
+            cout << "\nEnter end position\n";
+            cin >> end;
+            
+            showRecordInRange(start, end);
+            
+        }else if (choice == 3){
+            break;
+        }else {
+        cout << "Invalid Choice "
+         << "Try Again\n";
+        }
+    }
+}
+ main
 //Suy Visal & Meach SopheaVicheka
 void searchRecord(string lastName)
 {
@@ -287,7 +354,11 @@ int main()
     }
     else if (Choice == 4)
     {
-        Show_Record(head);
+ main
+ Show_Record(head);
+
+showRecordOption();
+main
     }
     else if (Choice == 5)
     {
