@@ -94,10 +94,57 @@ void insertRecord(string firstName,
 }
 
 //Long Chan Seka and Chhin Somalin
-void deleteRecord()
+
+void deleteRecord(Student** head, int position)
 {
-	
-}
+    Student* temp;
+    Student* forw;
+    Student* curr = *head; //current pointer assign to head
+    Student* prev = *head; //previous pointer assign to head
+    int count = 0; //count no of nodes in LL
+    // In Linked List is empty Just return it
+    if (*head==NULL)
+    cout<<"No records to delete";
+  
+// if position is 1 or first node (head)
+        else if(position == 1)
+        {
+            *head = curr->next;
+            free(curr);
+            curr = NULL;
+            cout<<"Record is deleted";
+            return;
+        }
+        prev =*head;
+            while (prev != NULL)
+          {
+              count++;
+                prev = prev->next;
+          }
+          if (count < 1 || position > count)
+          {
+            cout << "Invalid position";
+              return;
+          }
+          else
+        {
+          prev = *head;
+           //delete node position which is not equal to 1
+          while(position!=1) //position is not 1
+          {
+            
+            prev= curr; //prev pointer point to current node
+            curr=curr->next; // current pointer point to next node of current
+            position--; //decrement of position
+            
+            }
+            prev->next=curr->next; // to update the previous node to the next node of the delete node
+            free(curr); // free the delete node
+            curr = NULL; //set delete node to null
+            cout<<"Record "<<count<<"is deleted\n";
+            return;
+          }
+    }
 
 //Chea Jonathan and Eak Tech Hav
 void showAllRecords()
