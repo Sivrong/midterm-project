@@ -2,13 +2,11 @@
 #include <iomanip>
 using namespace std;
 
-//You can put delete function under insert function and call the function in choice 2
-//You can put print range under the show record function here and call the function in choice 4
 //You can put calculate average on top of the show all function here and acall the function in choice 5
 
 // Student Class
 // Lay Sivrong
-class Student
+struct Student
 {
 public:
   string firstName;
@@ -18,11 +16,11 @@ public:
   string courseCode;
   int grade;
   int position;
-  Student *next;
+  Student* next;
 };
 
 // Stores the head of the Linked List
-Student *head = new Student();
+Student* head = new Student();
 
 // Check Function to check that if
 // Record Already Exist or Not
@@ -47,7 +45,7 @@ bool check(string x)
 }
 
 // Function to insert the record
-//Thao Sotheavatey
+//Thao Sotheavatey and Lay Sivrong
 void insertRecord(string firstName,
            string lastName,
            string email,
@@ -80,11 +78,11 @@ void insertRecord(string firstName,
     t->position = 1;
     // t->next = head;
     head = t;
-      
   }
   else
   { 
     t->position = head->position+1;
+    t->next = NULL;
     t->next = head;
     head = t;
   }
@@ -278,8 +276,7 @@ int main()
 {
   head = NULL;
   string firstName, lastName, email, phone, courseCode;
-  int grade;
-  int Choice;
+  int grade, position, Choice;
 
   // Menu-driven program
   while (true)
@@ -316,7 +313,7 @@ int main()
     		{
 	    cout << "Enter the position to delete: ";
 	    cin >> position;
-	    deleteRecord();
+	    deleteRecord(&head, position);
     		}
 	  
     else if (Choice == 3)
