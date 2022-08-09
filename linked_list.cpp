@@ -270,6 +270,44 @@ void searchRecord(string lastName)
 	}
 }
 
+
+//Ratha Nit
+//pull request by Ratha Nit
+void ClassAverage(string courseCode, int grade)
+{
+    int i;
+    float perc;
+    float avg;
+    float sum = 0.0;
+    int count = 0;
+
+    if (!head) {
+        cout << "Class Code not avaiable";
+        return;
+    }
+    else {
+        Student* p = head;
+        while (p) {
+            if (p->courseCode == courseCode) {
+                sum += p->grade;
+                count += 1;
+            }
+            p = p->next;
+        }
+
+            avg = sum / count;
+
+            cout << "\nAverage Marks = " << avg;
+            cout << endl;
+            return;
+
+
+            if (p == NULL) {
+                cout << "Class Code not avaiable";
+            }
+        }
+    }
+
 // Driver code
 //Lay Sivrong
 int main()
@@ -329,7 +367,10 @@ int main()
     }
     else if (Choice == 5)
     {
-        
+        cout << "Enter CourseCode: ";
+            cin >> courseCode;
+
+            ClassAverage(courseCode, grade);
     }
 	  
     else if (Choice == 9)
