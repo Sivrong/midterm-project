@@ -271,7 +271,7 @@ void searchRecord(string lastName)
 }
 
 
-//Ratha Nit
+//Ratha Nit & Lim Sonata & Um Ramongleng
 //pull request by Ratha Nit
 void ClassAverage(string courseCode, int grade)
 {
